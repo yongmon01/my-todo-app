@@ -8,31 +8,27 @@ import {
 import CalendarPicker from 'react-native-calendar-picker';
 import moment from 'moment'
 
-export default function CalendarHook({onPutDue={onPutDue}, handleDue={handleDue}, id={id}}) {
+export default function CalendarHook(props) {
 
-    const [da, setDa] = useState('')
-    const [tst, setTst] =useState('')
+    const {handleDue, id, prev} = props
 
+    // const [selected, setSelected] = useState([{date: prev, style:{backgroundColor:'yellow'}}])
+    // let customDatesStyles = [{date: prev, style:{backgroundColor:'yellow'}}];
+    const [selected, setselected] = useState({date: prev, style:{backgroundColor:'yellow'}})
+    // console.log(prev)
     useEffect(()=>{
         //console.log(id)
-    }, [da])
-
-    function tes(data){
-        console.log('data;;',data)
-        setDa(data)
-    }
+        // customDatesStyles.push({date: "2021-06-29T00:00:00.000Z", style:{backgroundColor:'yellow'}})
+    }, [])
 
     function test(data){
+        // setSelected([{date: data, style:{backgroundColor:'yellow'}}])
         console.log('@',id,data)
-        setTst(data)
-        console.log('tst..', tst)
         var arr = data.toString().split(' ')
         var temp = arr[1]+arr[2]
-        handleDue(id,temp)
-        customDatesStyles.push({date: data, style:{backgroundColor:'yellow'}})
+        handleDue(id,temp,data)
+        // customDatesStyles.push({date: "2021-06-29T00:00:00.000Z", style:{backgroundColor:'yellow'}})
     }
-
-    let customDatesStyles = [{date: "2021-06-30T00:00:00.000Z", style:{backgroundColor:'yellow'}}];
 
     // let today = moment();
     // let day = today.clone().startOf('month');
@@ -58,11 +54,11 @@ export default function CalendarHook({onPutDue={onPutDue}, handleDue={handleDue}
                 // months={['1','2','3','4','5','6','7','8','9','10','11','12']}
                 startFromMonday={false}
                 selectedDayColor={'red'}
-                customDatesStyles={customDatesStyles}
+                customDatesStyles={[selected]}
             />
-
+            {console.log('selected: ', selected)}
+           
             <View>
-            <Text>SELECTED DATE:x</Text>
             </View>
         </View>
     )

@@ -5,7 +5,7 @@ import Calendar from './Calendar';
 // import Dimensions from 'react-native-extra-dimensions-android'
 import CalendarHook from './CalendarHook'
 
-function ModalTester({due, onPutDue, handleDue, id}) {
+function ModalTester({due, onPutDue, handleDue, id, prev}) {
   const [isModalVisible, setModalVisible] = useState(false);
   // const deviceWidth = Dimensions.get('window').width;
   const toggleModal = () => {
@@ -28,7 +28,7 @@ function ModalTester({due, onPutDue, handleDue, id}) {
           {/* <Button title="Hide modal" onPress={toggleModal} style={{width: 100, height: 100}}/> */}
           {/* <Text onPress={toggleModal} style={{backgroundColor:'white', width: 100, height: 100}}>Hide modal</Text> */}
           {/* <Calendar onPutDue={onPutDue} handleDue={handleDue} id={id}></Calendar> */}
-          <CalendarHook onPutDue={onPutDue} handleDue={handleDue} id={id}></CalendarHook>
+          <CalendarHook onPutDue={onPutDue} handleDue={handleDue} id={id} prev={prev}></CalendarHook>
         </View>
       </Modal>
     </View>

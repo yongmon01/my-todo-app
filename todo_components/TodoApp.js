@@ -10,8 +10,7 @@ import ModalExample from './test'
 import CalendarHook from './CalendarHook'
 
 export default function() {
-    const [todos, setTodos] = useState([{id: '123', textValue: 'this is test', checked: false, due: 'DUE'},
-        {id: '1234', textValue: 'rksk ekfk aktkdk', checked: false, due: 'DUE' }])
+    const [todos, setTodos] = useState([{id: '123', textValue: 'this is test', checked: false, due: 'DUE', prev: ''}])
     const addTodo = Text => {
         // 잘못된 예시.. 참조값이 변하지 않아서 컴포넌트가 다시 렌더링 되지않는다
         // const c = todos;
@@ -21,7 +20,7 @@ export default function() {
 
         setTodos([
             ...todos,
-            {id: Math.random().toString(), textValue: Text, checked: false, due: 'DUE'}
+            {id: Math.random().toString(), textValue: Text, checked: false, due: 'DUE', prev:''}
         ])
     }
     const Remove = id => e => {
@@ -52,11 +51,11 @@ export default function() {
     //         )
     //     )
     // }
-    const handleDue = (id, dDate) => {
-        console.log(id, dDate,' from TodoApp.js handleDue')
+    const handleDue = (id, dDate, prev) => {
+        console.log(id, dDate,' (from TodoApp.js handleDue)')
         setTodos(
             todos.map( todo =>
-                todo.id === id? {...todo, due: dDate} : todo
+                todo.id === id? {...todo, due: dDate, prev: prev} : todo
             )
         )
     }

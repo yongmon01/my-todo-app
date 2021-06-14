@@ -13,7 +13,7 @@ export default function(props) {
                 key={card.id} id={card.id} txt={card.textValue} 
                 checked={card.checked} onRemove={onRemove} onToggle={onToggle}
                 handleToggle={handleToggle} 
-                due={card.due} onPutDue={onPutDue} handleDue={handleDue}>
+                due={card.due} onPutDue={onPutDue} handleDue={handleDue} prev={card.prev}>
                     {console.log('card.due: ',card.due, ' (from AppBody)')}
                 </ListItem> //
     })

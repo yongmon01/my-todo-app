@@ -6,7 +6,7 @@ import ModalTester from './ModalTester';
 
 export default function(props) {
     
-    const {id, txt, checked, onRemove, onToggle, due, onPutDue, handleToggle, handleDue} = props
+    const {id, txt, checked, onRemove, onToggle, due, onPutDue, handleToggle, handleDue, prev} = props
 
     const test = aa => e=> {
         console.log(aa)
@@ -59,7 +59,7 @@ export default function(props) {
             {/* 텍스트 제한 기능도 넣어보기 */}
             {console.log('due: ',due,' (from listItem)')}
             {/* <Text style={{backgroundColor:'gray', flex:1}}>{dueDate}</Text> */}
-            <ModalTester due={due} onPutDue={onPutDue} handleDue={handleDue} id={id}></ModalTester>
+            <ModalTester due={due} onPutDue={onPutDue} handleDue={handleDue} id={id} prev={prev}></ModalTester>
 
             <TouchableOpacity onPress={onRemove(id)} style={styles.flexOne} >
                 <Text ><Icon name="delete" size={30} color="#e33057" /></Text>
